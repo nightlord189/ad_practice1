@@ -1,0 +1,7 @@
+{
+    "DbAddress": "localhost",
+    "DbPort":5432,
+    "DbName":"ad_practice1",
+    "DbUser":"postgres",
+    "DbPassword": "123456"
+}
