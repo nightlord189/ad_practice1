@@ -5,8 +5,8 @@ type Article struct {
 	Name    string  `gorm:"column:name"`
 	Package string  `gorm:"column:package"`
 	Price   float32 `gorm:"column:price"`
-	TypeID  float32 `gorm:"column:type_id"`
-	FirmID  float32 `gorm:"column:firm_id"`
+	TypeID  int     `gorm:"column:type_id"`
+	FirmID  int     `gorm:"column:firm_id"`
 }
 
 func (u *Article) TableName() string {
