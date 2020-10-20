@@ -1,10 +1,10 @@
 package model
 
-type DrugType struct {
+type Type struct {
 	ID   int    `gorm:"column:id;primary_key"`
 	Name string `gorm:"column:name"`
 }
 
-func (u *DrugType) TableName() string {
-	return "drug_type"
+func (u *Type) TableName() string {
+	return "type"
 }
