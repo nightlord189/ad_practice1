@@ -3,5 +3,6 @@
     "DbPort":5432,
     "DbName":"ad_practice1",
     "DbUser":"postgres",
-    "DbPassword": "123456"
+    "DbPassword": "123456",
+    "SqlPath": "sql"
 }

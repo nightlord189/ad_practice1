@@ -13,6 +13,7 @@ type Config struct {
 	DbName     string
 	DbUser     string
 	DbPassword string
+	SQLPath    string
 }
 
 //Load - загружает конфиг по указанному пути
