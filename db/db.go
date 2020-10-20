@@ -18,7 +18,7 @@ func Launch(cfg *config.Config) *(gorm.DB) {
 	}
 	//defer db.Close()
 	db.AutoMigrate(
-		&model.DrugType{},
+		&model.Type{},
 		&model.Firm{},
 		&model.Drugstore{},
 		&model.Article{},
