@@ -14,4 +14,6 @@ func main() {
 	dbRef.Exec(sqlManager.Data["clear"])
 	dbRef.Exec(sqlManager.Data["init"])
 	db.GenerateArticles(dbRef)
+	db.GenerateBills(dbRef)
+	db.GenerateSales(dbRef)
 }

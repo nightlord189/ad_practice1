@@ -34,5 +34,5 @@ func AutoMigrate(db *gorm.DB) {
 	db.Model(&model.Article{}).AddForeignKey("firm_id", "firm(id)", "NO ACTION", "NO ACTION")
 	db.Model(&model.Sale{}).AddForeignKey("article_id", "article(id)", "NO ACTION", "NO ACTION")
 	db.Model(&model.Sale{}).AddForeignKey("bill_id", "bill(id)", "NO ACTION", "NO ACTION")
-	db.Model(&model.Sale{}).AddForeignKey("drug_id", "drugstore(id)", "NO ACTION", "NO ACTION")
+	db.Model(&model.Sale{}).AddForeignKey("drugstore_id", "drugstore(id)", "NO ACTION", "NO ACTION")
 }
