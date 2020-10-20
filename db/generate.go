@@ -102,13 +102,21 @@ func GenerateDatesForBills() []string {
 func GenerateBills(db *gorm.DB) {
 	fmt.Println("generating bills")
 	dates := GenerateDatesForBills()
+	tx := db.Begin()
+	defer func() {
+		if r := recover(); r != nil {
+			tx.Rollback()
+			fmt.Println("rollback")
+		}
+	}()
 	for i := 1; i <= 12000; i++ {
 		item := model.Bill{
 			ID:   i,
 			Date: dates[i-1],
 		}
-		db.Create(&item)
+		tx.Create(&item)
 	}
+	tx.Commit()
 }
 
 func getSeasonFromDate(date string) string {
@@ -175,6 +183,18 @@ func GenerateSales(db *gorm.DB) {
 		panic("Get bills err: " + findResult.Error.Error())
 	}
 	id := 1
+
+	tx := db.Begin()
+	defer func() {
+		if r := recover(); r != nil {
+			tx.Rollback()
+			fmt.Println("rollback")
+		}
+	}()
+	if err := tx.Error; err != nil {
+		fmt.Println(err.Error())
+	}
+
 	for i := 0; i < len(bills); i++ {
 		salesCount := Range(1, 5)
 		for j := 0; j < salesCount; j++ {
@@ -187,10 +207,10 @@ func GenerateSales(db *gorm.DB) {
 				Price:       article.Price,
 				ArticleID:   article.ID,
 			}
-			db.Create(&item)
-			fmt.Println(id)
+			tx.Create(&item)
 			id++
 		}
 	}
-	fmt.Println(findResult.RowsAffected)
+	fmt.Println("data processed, preparing to commit")
+	tx.Commit()
 }
