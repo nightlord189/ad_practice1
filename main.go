@@ -21,4 +21,5 @@ func main() {
 	dbRef.Exec(sqlManager.Data["discount"])
 	fmt.Println("adding OLAP")
 	dbRef.Exec(sqlManager.Data["view_table"])
+	dbRef.Exec(sqlManager.Data["stored"])
 }

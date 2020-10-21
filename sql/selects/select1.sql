@@ -43,11 +43,12 @@ where address = 'Адрес 3'
 and substring (bill_date from 0 for 8) in ('2012-03', '2012-04', '2012-05')
 group by firm_name
 
---
-select 
+--кросс-таблица, где столбцы - месяцы, а в строках - типы товаров и суммы продаж по месяцам
+select crosstab ($$
     type_name,
     substring (bill_date from 6 for 2) as month,
     sum (quantity*price) as income
 from fullSalesView
 group by type_name, substring (bill_date from 6 for 2)
 order by type_name, month
+$$)
