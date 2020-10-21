@@ -44,11 +44,11 @@ and substring (bill_date from 0 for 8) in ('2012-03', '2012-04', '2012-05')
 group by firm_name
 
 --кросс-таблица, где столбцы - месяцы, а в строках - типы товаров и суммы продаж по месяцам
-select crosstab ($$
-    type_name,
-    substring (bill_date from 6 for 2) as month,
-    sum (quantity*price) as income
+select * from crosstab ('select 
+	type_name, 
+	substring (bill_date from 6 for 2) as month, 
+	sum (quantity*price)::text as income
 from fullSalesView
 group by type_name, substring (bill_date from 6 for 2)
 order by type_name, month
-$$)
+') AS ct ("type_name" text, "month" text, "income" text);
