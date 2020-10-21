@@ -155,7 +155,7 @@ func getTypeIDWithSeason(season string) int {
 		preferredTypeID = 6
 		break
 	}
-	randResult := Range(50, 100)
+	randResult := Range(0, 100)
 	if randResult <= 50 {
 		return preferredTypeID
 	}
