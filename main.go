@@ -16,4 +16,6 @@ func main() {
 	db.GenerateArticles(dbRef)
 	db.GenerateBills(dbRef)
 	db.GenerateSales(dbRef)
+	fmt.Println("adding discounts")
+	dbRef.Exec(sqlManager.Data["discount"])
 }
