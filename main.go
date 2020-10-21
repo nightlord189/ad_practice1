@@ -12,6 +12,7 @@ func main() {
 	sqlManager := db.NewSQLManager(conf.SQLPath)
 	dbRef := db.Launch(conf)
 	dbRef.Exec(sqlManager.Data["clear"])
+	dbRef.Exec("CREATE EXTENSION IF NOT EXISTS tablefunc")
 	dbRef.Exec(sqlManager.Data["init"])
 	db.GenerateArticles(dbRef)
 	db.GenerateBills(dbRef)
