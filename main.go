@@ -18,4 +18,6 @@ func main() {
 	db.GenerateSales(dbRef)
 	fmt.Println("adding discounts")
 	dbRef.Exec(sqlManager.Data["discount"])
+	fmt.Println("adding OLAP")
+	dbRef.Exec(sqlManager.Data["view_table"])
 }

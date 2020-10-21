@@ -25,6 +25,9 @@ func (s *SQLManager) LoadSQL(dir string) {
 		panic("Error load sql: " + err.Error())
 	}
 	for _, f := range files {
+		if !strings.Contains(f.Name(), ".sql") {
+			continue
+		}
 		b, err := ioutil.ReadFile(path.Join(dir, f.Name()))
 		if err != nil {
 			panic("Error load sql: " + err.Error())
