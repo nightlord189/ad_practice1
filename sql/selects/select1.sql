@@ -3,7 +3,7 @@ select
     firm_name, 
     sum(quantity) as quantity, 
     sum(quantity*price) as income
-FROM fullSalesView
+from fullSalesView
 group by firm_name
 
 --сколько единиц лекарств от кашля и на какую сумму было продано в Аптеке 1?
